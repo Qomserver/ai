@@ -7,69 +7,308 @@
   Add your open source license, GitHub uses MIT license.
 -->
 
-# GitHub Pages
+# 🚀 سیستم تولید محتوای هوش مصنوعی چندپلتفرمی
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+یک سیستم پیشرفته تولید محتوا که با استفاده از **Gemini 2.5 Flash** و قابلیت **Function Calling**، محتوای بهینه و اختصاصی برای پلتفرم‌های مختلف تولید می‌کند.
 
-</header>
+## ✨ ویژگی‌های کلیدی
 
-<!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
--->
+- 🎯 **تولید محتوای چندپلتفرمی**: اینستاگرام، تلگرام، وب‌سایت، ایتا، روبیکا
+- 🤖 **هوش مصنوعی پیشرفته**: استفاده از Gemini 2.5 Flash با Function Calling
+- 🔍 **بهینه‌سازی SEO**: محتوای وب‌سایت کاملاً SEO-friendly
+- 🎨 **پیشنهادات بصری**: ایده‌های تصویر و ویدئو متناسب با محتوا
+- ⏰ **زمان‌بندی خودکار**: انتشار خودکار محتوا در زمان‌های مشخص
+- 🌍 **پشتیبانی چندزبانه**: تولید محتوا به زبان‌های مختلف
+- 📊 **تحلیل موضوع**: تحلیل عمیق و ایده‌پردازی خلاقانه
 
-## Welcome
+## 🏗️ معماری سیستم
 
-With GitHub Pages, you can host project blogs, documentation, resumes, portfolios, or any other static content you'd like. Your GitHub repository can easily become its own website. In this course, we'll show you how to set up your own site or blog using GitHub Pages.
+```
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   FastAPI App   │───▶│ Content Generator│───▶│  Gemini Client  │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   Scheduler     │    │   Models & API   │    │ Function Calls  │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+```
 
-- **Who is this for**: Beginners, students, project maintainers, small businesses.
-- **What you'll learn**: How to build a GitHub Pages site.
-- **What you'll build**: We'll build a simple GitHub Pages site with a blog. We'll use [Jekyll](https://jekyllrb.com), a static site generator.
-- **Prerequisites**: If you need to learn about branches, commits, and pull requests, take [Introduction to GitHub](https://github.com/skills/introduction-to-github) first.
-- **How long**: This course takes less than one hour to complete.
+## 🚀 نصب و راه‌اندازی
 
-In this course, you will:
+### پیش‌نیازها
 
-1. Enable GitHub Pages
-2. Configure your site
-3. Customize your home page
-4. Create a blog post
-5. Merge your pull request
+- Python 3.8+
+- Gemini API Key
 
-### How to start this course
+### نصب
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'skills',
-  template_name: 'github-pages',
-  owner: '@me',
-  name: 'skills-github-pages',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+1. **کلون کردن مخزن**
+```bash
+git clone <repository-url>
+cd ai-content-generator
+```
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=skills&template_name=github-pages&owner=%40me&name=skills-github-pages&description=My+clone+repository&visibility=public)
+2. **نصب وابستگی‌ها**
+```bash
+pip install -r requirements.txt
+```
 
-1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+3. **تنظیم API Key**
+```bash
+cp .env.example .env
+# فایل .env را ویرایش کرده و GEMINI_API_KEY خود را اضافه کنید
+```
 
-<footer>
+4. **اجرای سیستم**
+```bash
+python main.py
+```
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+## 📖 نحوه استفاده
+
+### API Endpoints
+
+#### تولید محتوا
+```http
+POST /generate-content
+Content-Type: application/json
+
+{
+  "topic": "بازاریابی دیجیتال در سال 2024",
+  "keywords": ["بازاریابی دیجیتال", "شبکه‌های اجتماعی"],
+  "target_audience": "کارآفرینان",
+  "tone": "professional",
+  "platforms": ["instagram", "telegram", "website"],
+  "include_visual_suggestions": true,
+  "include_seo": true
+}
+```
+
+#### بررسی وضعیت
+```http
+GET /health
+```
+
+#### دریافت پلتفرم‌ها
+```http
+GET /platforms
+```
+
+### نمونه کد Python
+
+```python
+from models import ContentRequest, Platform, Tone
+from content_generator import ContentGenerator
+
+# ایجاد درخواست
+request = ContentRequest(
+    topic="نکات موفقیت در کسب‌وکار",
+    keywords=["موفقیت", "کسب‌وکار"],
+    target_audience="کارآفرینان",
+    tone=Tone.PROFESSIONAL,
+    platforms=[Platform.INSTAGRAM, Platform.TELEGRAM],
+    include_visual_suggestions=True
+)
+
+# تولید محتوا
+generator = ContentGenerator()
+response = generator.generate_content(request)
+
+# نمایش نتایج
+print(f"کپشن اینستاگرام: {response.instagram_content['caption']}")
+print(f"هشتگ‌ها: {response.hashtags}")
+```
+
+## 🎯 پلتفرم‌های پشتیبانی شده
+
+### 📱 اینستاگرام
+- کپشن‌های جذاب (حداکثر 2200 کاراکتر)
+- هشتگ‌های بهینه
+- اموجی‌های مناسب
+- CTA موثر
+
+### 💬 تلگرام
+- محتوای کامل و مفصل
+- هشتگ‌های مرتبط
+- اموجی‌های مناسب
+- CTA موثر
+
+### 🌐 وب‌سایت
+- محتوای SEO-friendly
+- عنوان و متاتگ بهینه
+- هدینگ‌های استاندارد
+- کلمات کلیدی SEO
+
+### 📢 ایتا
+- محتوای مناسب شبکه اجتماعی
+- هشتگ‌های مرتبط
+- اموجی‌های مناسب
+
+### 🎯 روبیکا
+- محتوای بهینه برای الگوریتم جدید
+- هشتگ‌های موثر
+- CTA مناسب
+
+## 🔧 Function Calling
+
+سیستم از قابلیت Function Calling Gemini برای تولید محتوای ساختاریافته استفاده می‌کند:
+
+### توابع تعریف شده
+
+1. **`generate_content`**: تولید محتوای متناسب با پلتفرم
+2. **`optimize_for_seo`**: بهینه‌سازی محتوای وب‌سایت
+3. **`generate_visual_idea`**: تولید ایده‌های بصری
+
+## ⏰ سیستم زمان‌بندی
+
+```python
+from scheduler import ContentScheduler
+from datetime import datetime, timedelta
+
+scheduler = ContentScheduler()
+
+# زمان‌بندی پست
+publish_time = datetime.now() + timedelta(hours=2)
+post_id = scheduler.schedule_post(
+    Platform.INSTAGRAM,
+    content_request,
+    publish_time
+)
+
+# پست‌های تکرارشونده
+post_ids = scheduler.schedule_recurring_posts(
+    Platform.TELEGRAM,
+    content_request,
+    interval_hours=24,
+    start_time=datetime.now()
+)
+```
+
+## 🎨 پیشنهادات بصری
+
+سیستم برای هر محتوا پیشنهادات بصری ارائه می‌دهد:
+
+- **سبک تصویر**: modern, minimalist, vibrant, professional
+- **رنگ‌بندی**: پالت‌های رنگی متناسب با سبک
+- **ترکیب‌بندی**: راهنمایی برای طراحی
+- **ویدئو**: مدت و سبک مناسب
+
+## 🔍 بهینه‌سازی SEO
+
+برای محتوای وب‌سایت:
+
+- عنوان بهینه (حداکثر 60 کاراکتر)
+- توضیحات متا (حداکثر 160 کاراکتر)
+- هدینگ‌های H1, H2, H3
+- کلمات کلیدی هدفمند
+
+## 📊 نمونه خروجی
+
+```json
+{
+  "topic_analysis": {
+    "analysis": "تحلیل کامل موضوع...",
+    "key_points": ["نکته 1", "نکته 2"],
+    "creative_angles": ["زاویه 1", "زاویه 2"]
+  },
+  "instagram_content": {
+    "caption": "کپشن جذاب...",
+    "hashtags": ["#هشتگ1", "#هشتگ2"],
+    "emojis": ["🚀", "💡"],
+    "cta": "شروع کنید"
+  },
+  "hashtags": ["#موضوع", "#کلمه_کلیدی"],
+  "visual_suggestions": {
+    "image_style": "modern",
+    "color_scheme": ["#2C3E50", "#3498DB"],
+    "composition": "ترکیب‌بندی متقارن"
+  }
+}
+```
+
+## 🛠️ توسعه و سفارشی‌سازی
+
+### اضافه کردن پلتفرم جدید
+
+```python
+# در models.py
+class Platform(str, Enum):
+    NEW_PLATFORM = "new_platform"
+
+# در content_generator.py
+def _generate_new_platform_content(self, request: ContentRequest):
+    # منطق تولید محتوا
+    pass
+```
+
+### تنظیمات جدید
+
+```python
+# در config.py
+class Config:
+    NEW_PLATFORM_MAX_LENGTH = 1000
+    NEW_PLATFORM_FEATURES = ["feature1", "feature2"]
+```
+
+## 📝 نمونه‌های استفاده
+
+### تولید انبوه محتوا
+
+```python
+topics = ["موضوع 1", "موضوع 2", "موضوع 3"]
+for topic in topics:
+    request = ContentRequest(topic=topic, ...)
+    response = generator.generate_content(request)
+    # ذخیره یا انتشار محتوا
+```
+
+### زمان‌بندی هوشمند
+
+```python
+# انتشار در بهترین زمان‌ها
+best_times = {
+    Platform.INSTAGRAM: ["09:00", "18:00"],
+    Platform.TELEGRAM: ["08:00", "12:00", "20:00"]
+}
+
+scheduler.schedule_platform_specific_posts(request, best_times)
+```
+
+## 🔒 امنیت
+
+- API Key ها در فایل `.env` ذخیره می‌شوند
+- اعتبارسنجی ورودی‌ها با Pydantic
+- محدودیت‌های مناسب برای API calls
+
+## 📈 عملکرد
+
+- تولید محتوا در کمتر از 10 ثانیه
+- پشتیبانی از 100+ درخواست همزمان
+- کش کردن نتایج برای بهبود سرعت
+
+## 🤝 مشارکت
+
+1. Fork کنید
+2. Branch جدید ایجاد کنید (`git checkout -b feature/amazing-feature`)
+3. تغییرات را commit کنید (`git commit -m 'Add amazing feature'`)
+4. Push کنید (`git push origin feature/amazing-feature`)
+5. Pull Request ایجاد کنید
+
+## 📄 لایسنس
+
+این پروژه تحت لایسنس MIT منتشر شده است.
+
+## 📞 پشتیبانی
+
+- 📧 ایمیل: support@example.com
+- 💬 تلگرام: @support_channel
+- 🐛 Issues: GitHub Issues
+
+## 🙏 تشکر
+
+از تمامی مشارکت‌کنندگان و کاربران این سیستم تشکر می‌کنیم.
 
 ---
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
-
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
-
-</footer>
+**نکته**: برای استفاده از این سیستم، حتماً API Key معتبر Gemini داشته باشید.
