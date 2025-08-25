@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیستم تولید محتوای هوش مصنوعی چندپلتفرمی</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot me-2"></i>
+                تولیدکننده محتوای هوشمند
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#generator" data-bs-toggle="tab">
+                            <i class="fas fa-magic me-1"></i>تولید محتوا
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#scheduler" data-bs-toggle="tab">
+                            <i class="fas fa-calendar-alt me-1"></i>زمان‌بندی
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#analytics" data-bs-toggle="tab">
+                            <i class="fas fa-chart-line me-1"></i>آمار
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5 pt-4">
+        <div class="tab-content">
+            <!-- Generator Tab -->
+            <div class="tab-pane fade show active" id="generator">
+                <div class="row">
+                    <!-- Input Form -->
+                    <div class="col-lg-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-edit me-2"></i>تنظیمات تولید محتوا
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="contentForm">
+                                    <!-- Topic -->
+                                    <div class="mb-3">
+                                        <label for="topic" class="form-label">موضوع اصلی</label>
+                                        <input type="text" class="form-control" id="topic" 
+                                               placeholder="مثال: تکنولوژی هوش مصنوعی" required>
+                                    </div>
+
+                                    <!-- Keywords -->
+                                    <div class="mb-3">
+                                        <label for="keywords" class="form-label">کلمات کلیدی</label>
+                                        <input type="text" class="form-control" id="keywords" 
+                                               placeholder="هوش مصنوعی، یادگیری ماشین، AI">
+                                        <div class="form-text">کلمات را با کاما جدا کنید</div>
+                                    </div>
+
+                                    <!-- Target Audience -->
+                                    <div class="mb-3">
+                                        <label for="audience" class="form-label">مخاطب هدف</label>
+                                        <select class="form-select" id="audience">
+                                            <option value="">انتخاب کنید</option>
+                                            <option value="عموم">عموم مردم</option>
+                                            <option value="متخصصان">متخصصان حوزه</option>
+                                            <option value="جوانان">جوانان</option>
+                                            <option value="کسب‌وکارها">کسب‌وکارها</option>
+                                            <option value="دانشجویان">دانشجویان</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Content Type -->
+                                    <div class="mb-3">
+                                        <label for="contentType" class="form-label">نوع محتوا</label>
+                                        <select class="form-select" id="contentType">
+                                            <option value="post">پست معمولی</option>
+                                            <option value="story">استوری</option>
+                                            <option value="article">مقاله</option>
+                                            <option value="news">خبر</option>
+                                            <option value="advertisement">تبلیغات</option>
+                                            <option value="video_script">اسکریپت ویدئو</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Tone -->
+                                    <div class="mb-3">
+                                        <label for="tone" class="form-label">لحن محتوا</label>
+                                        <select class="form-select" id="tone">
+                                            <option value="friendly">دوستانه</option>
+                                            <option value="formal">رسمی</option>
+                                            <option value="informal">غیررسمی</option>
+                                            <option value="professional">حرفه‌ای</option>
+                                            <option value="humorous">طنز</option>
+                                            <option value="motivational">انگیزشی</option>
+                                            <option value="educational">آموزشی</option>
+                                            <option value="sales">فروشی</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Platforms -->
+                                    <div class="mb-3">
+                                        <label class="form-label">پلتفرم‌های هدف</label>
+                                        <div class="platform-checkboxes">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="instagram" id="instagram" checked>
+                                                <label class="form-check-label" for="instagram">
+                                                    <i class="fab fa-instagram text-danger"></i> اینستاگرام
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="telegram" id="telegram" checked>
+                                                <label class="form-check-label" for="telegram">
+                                                    <i class="fab fa-telegram text-primary"></i> تلگرام
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="website" id="website">
+                                                <label class="form-check-label" for="website">
+                                                    <i class="fas fa-globe text-success"></i> وب‌سایت
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="eitaa" id="eitaa">
+                                                <label class="form-check-label" for="eitaa">
+                                                    <i class="fas fa-comments text-info"></i> ایتا
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="rubika" id="rubika">
+                                                <label class="form-check-label" for="rubika">
+                                                    <i class="fas fa-comment-dots text-warning"></i> روبیکا
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Generate Button -->
+                                    <button type="submit" class="btn btn-primary w-100" id="generateBtn">
+                                        <i class="fas fa-magic me-2"></i>تولید محتوا
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="col-lg-8">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-header bg-success text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-file-alt me-2"></i>محتوای تولید شده
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="loadingSpinner" class="text-center d-none">
+                                    <div class="spinner-border text-primary" role="status">
+                                        <span class="visually-hidden">در حال تولید...</span>
+                                    </div>
+                                    <p class="mt-2">محتوا در حال تولید است...</p>
+                                </div>
+
+                                <div id="results" class="d-none">
+                                    <!-- Platform Results -->
+                                    <div class="platform-results"></div>
+
+                                    <!-- Hashtags -->
+                                    <div class="mt-4">
+                                        <h6><i class="fas fa-hashtag me-2"></i>هشتگ‌های پیشنهادی</h6>
+                                        <div class="hashtags-container"></div>
+                                    </div>
+
+                                    <!-- CTA Suggestions -->
+                                    <div class="mt-4">
+                                        <h6><i class="fas fa-bullhorn me-2"></i>پیشنهادات فراخوان عمل</h6>
+                                        <div class="cta-container"></div>
+                                    </div>
+
+                                    <!-- Action Buttons -->
+                                    <div class="mt-4 d-flex gap-2">
+                                        <button class="btn btn-outline-primary" onclick="copyAllContent()">
+                                            <i class="fas fa-copy me-1"></i>کپی همه
+                                        </button>
+                                        <button class="btn btn-outline-success" onclick="saveContent()">
+                                            <i class="fas fa-save me-1"></i>ذخیره
+                                        </button>
+                                        <button class="btn btn-outline-info" onclick="optimizeSEO()">
+                                            <i class="fas fa-search me-1"></i>بهینه‌سازی SEO
+                                        </button>
+                                        <button class="btn btn-outline-warning" onclick="generateVisualIdeas()">
+                                            <i class="fas fa-image me-1"></i>ایده‌های بصری
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div id="emptyState" class="text-center text-muted py-5">
+                                    <i class="fas fa-robot fa-3x mb-3"></i>
+                                    <h5>آماده تولید محتوای شگفت‌انگیز!</h5>
+                                    <p>فرم را پر کنید و دکمه تولید محتوا را بزنید</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scheduler Tab -->
+            <div class="tab-pane fade" id="scheduler">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-info text-white">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-calendar-plus me-2"></i>زمان‌بندی جدید
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="scheduleForm">
+                                    <div class="mb-3">
+                                        <label for="schedulePlatform" class="form-label">پلتفرم</label>
+                                        <select class="form-select" id="schedulePlatform" required>
+                                            <option value="">انتخاب کنید</option>
+                                            <option value="instagram">اینستاگرام</option>
+                                            <option value="telegram">تلگرام</option>
+                                            <option value="website">وب‌سایت</option>
+                                            <option value="eitaa">ایتا</option>
+                                            <option value="rubika">روبیکا</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="scheduleContent" class="form-label">محتوا</label>
+                                        <textarea class="form-control" id="scheduleContent" rows="4" 
+                                                  placeholder="محتوای مورد نظر برای انتشار" required></textarea>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="scheduleDate" class="form-label">تاریخ</label>
+                                                <input type="date" class="form-control" id="scheduleDate" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="scheduleTime" class="form-label">زمان</label>
+                                                <input type="time" class="form-control" id="scheduleTime" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="autoPublish" checked>
+                                            <label class="form-check-label" for="autoPublish">
+                                                انتشار خودکار
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-info w-100">
+                                        <i class="fas fa-clock me-2"></i>زمان‌بندی کن
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card shadow-sm">
+                            <div class="card-header bg-warning text-dark">
+                                <h5 class="mb-0">
+                                    <i class="fas fa-list me-2"></i>لیست زمان‌بندی شده
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="scheduledList">
+                                    <!-- لیست زمان‌بندی شده اینجا قرار می‌گیرد -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Tab -->
+            <div class="tab-pane fade" id="analytics">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card text-center bg-primary text-white">
+                            <div class="card-body">
+                                <i class="fas fa-file-alt fa-2x mb-2"></i>
+                                <h3 id="totalGenerated">0</h3>
+                                <p>محتوای تولید شده</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card text-center bg-success text-white">
+                            <div class="card-body">
+                                <i class="fas fa-calendar-check fa-2x mb-2"></i>
+                                <h3 id="totalScheduled">0</h3>
+                                <p>زمان‌بندی شده</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card text-center bg-info text-white">
+                            <div class="card-body">
+                                <i class="fas fa-share-alt fa-2x mb-2"></i>
+                                <h3 id="totalPublished">0</h3>
+                                <p>منتشر شده</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card text-center bg-warning text-dark">
+                            <div class="card-body">
+                                <i class="fas fa-eye fa-2x mb-2"></i>
+                                <h3 id="totalViews">0</h3>
+                                <p>بازدید کل</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>نمودار عملکرد</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="performanceChart" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>توزیع پلتفرم‌ها</h5>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="platformChart" width="400" height="200"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <!-- SEO Optimization Modal -->
+    <div class="modal fade" id="seoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-search me-2"></i>بهینه‌سازی SEO
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="seoResults">
+                        <!-- نتایج SEO اینجا قرار می‌گیرد -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visual Ideas Modal -->
+    <div class="modal fade" id="visualModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-image me-2"></i>ایده‌های بصری
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="visualResults">
+                        <!-- ایده‌های بصری اینجا قرار می‌گیرد -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
